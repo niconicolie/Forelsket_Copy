@@ -1,18 +1,24 @@
 export const RouteType = {
+  HOME: "HOME",
   LOGIN: "LOGIN",
   JOIN: "JOIN",
-  HOME: "HOME",
-  SETTINGS: "SETTINGS",
+  ACCOUNT: "ACCOUNT",
+  ORDERS: "ORDERS",
+  HELP: "HELP",
+  LOGOUT: "LOGOUT",
   ERROR: "ERROR",
 } as const;
 
 export type RouteType = (typeof RouteType)[keyof typeof RouteType];
 
 export const routes: Record<RouteType, string> = {
+  [RouteType.HOME]: "/",
   [RouteType.LOGIN]: "/login",
   [RouteType.JOIN]: "/join",
-  [RouteType.HOME]: "/",
-  [RouteType.SETTINGS]: "/settings",
+  [RouteType.ACCOUNT]: "/account",
+  [RouteType.ORDERS]: "/orders",
+  [RouteType.HELP]: "/help",
+  [RouteType.LOGOUT]: "/logout",
   [RouteType.ERROR]: "/error",
 };
 
