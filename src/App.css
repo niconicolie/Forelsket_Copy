@@ -1,9 +1,11 @@
 @import "tailwindcss";
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400..900&display=swap');
 
 :root {
 /* fonts */
 --font-inter: "Inter", sans-serif;
+--font-cinzel: "Cinzel", sans-serif;
 /* black scale */
 --ds-color-black-10: #FAFAFA;
 --ds-color-black-50: #F4F4F5;
