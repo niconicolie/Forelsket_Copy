@@ -1,18 +1,18 @@
 import "../styles/topslider.css";
 
 const items = [
-  "React",
-  "TypeScript",
-  "Next.js",
-  "Tailwind CSS",
-  "Node.js",
-  "NestJS",
-  "UI/UX",
-  "Framer Motion",
-  "API REST",
-  "PostgreSQL",
-  "MongoDB",
-  "Design System",
+  "Skincare",
+  "Perfumes",
+  "Makeup",
+  "Body Care",
+  "Hair Care",
+  "Cosmetics",
+  "Sneakers",
+  "Heels",
+  "Dresses",
+  "Bags",
+  "Accessories",
+  "Fashion",
 ];
 
 export default function TopSlider() {
