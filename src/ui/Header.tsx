@@ -4,14 +4,20 @@ import { RouteType } from "../types/Navigation.type";
 import basket from "../assets/basket.svg"
 import user from "../assets/user.svg"
 import search from "../assets/search.svg"
+import heart from "../assets/heart.svg"
 import "../styles/header.css";
 
 export const Header = ({ isMobile, handleNavigation }: Props) => {
+  const [basketCount, setBasketCount] = useState(0);
   const [openDesktopDropdown, setOpenDesktopDropdown] = useState(false);
   const [openMobileDropdown, setOpenMobileDropdown] = useState(false);
 
   const desktopDropdownRef = useRef<HTMLDivElement>(null);
   const mobileDropdownRef = useRef<HTMLDivElement>(null);
+
+  const clickB = () => {
+    setBasketCount(basketCount + 1);
+  }
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -43,7 +49,7 @@ export const Header = ({ isMobile, handleNavigation }: Props) => {
       <div className="header hidden md:flex h-[64px] items-center justify-between px-6 py-4 relative">
 
         <div className="flex items-center min-w-fit">
-          <h1 className="title-header text-xl font-bold" onClick={() => handleNavigation(RouteType.HOME)}>FORELSKET</h1>
+          <h1 className="title-header text-xl font-bold" onClick={clickB}>FORELSKET</h1>
         </div>
 
         <div className="flex-1 flex justify-center">
@@ -52,6 +58,7 @@ export const Header = ({ isMobile, handleNavigation }: Props) => {
             <div className="search-container">
               <input
                 type="text"
+                id="search"
                 placeholder="Search..."
                 className="search-input"
               />
@@ -62,20 +69,35 @@ export const Header = ({ isMobile, handleNavigation }: Props) => {
         </div>
 
         <div className="flex items-center gap-4 min-w-fit relative">
-          <button type="button" className="btn-ico-header">
+          {/* experimental */}
+          <button type="button" id="favorites" className="btn-ico-header" onClick={() => handleNavigation(RouteType.FAVORITES)}>
+            <img title="favorites" src={heart} className="h-[22px] mt-1.5" />
+          </button>
+          
+          <button type="button" id="basket" className="btn-ico-header">
             <img
+              title="cart"
               src={basket}
               className="h-[22px]"
             />
+            {/* TODO: contador de items no carrinho */}
+            <span className={`basket-count transition-all duration-200 ${
+                basketCount
+                  ? "opacity-100 visible"
+                  : "opacity-0 invisible"
+              }`}>
+              {basketCount}
+            </span>
           </button>
 
           <div className="relative" ref={desktopDropdownRef}>
             <button
               type="button"
+              id="user"
               className="btn-ico-header"
               onClick={() => setOpenDesktopDropdown(!openDesktopDropdown)}
             >
-              <img src={user} className="h-[26px]" />
+              <img title="user" src={user} className="h-[26px]" />
             </button>
 
             <div
@@ -97,7 +119,7 @@ export const Header = ({ isMobile, handleNavigation }: Props) => {
                 Help & Support
               </button>
 
-              <button className="dropdown-item text-[#AA336A]" onClick={() => handleNavigation(RouteType.LOGOUT)}>
+              <button className="dropdown-item text-[#E0115F]" onClick={() => handleNavigation(RouteType.LOGOUT)}>
                 Logout
               </button>
             </div>
@@ -116,6 +138,7 @@ export const Header = ({ isMobile, handleNavigation }: Props) => {
             <div className="search-container">
               <input
                 type="text"
+                id="search-mobile"
                 placeholder="Search..."
                 className="search-input"
               />
@@ -128,20 +151,30 @@ export const Header = ({ isMobile, handleNavigation }: Props) => {
         </div>
 
         <div className="flex items-center gap-4 min-w-fit relative">
-          <button type="button" className="btn-ico-header">
+          <button type="button" id="basket-mobile" className="btn-ico-header">
             <img
+              title="cart"
               src={basket}
               className="h-[22px]"
             />
+            {/* TODO: contador de items no carrinho */}
+            <span className={`basket-count transition-all duration-200 ${
+              basketCount
+                ? "opacity-100 visible"
+                : "opacity-0 invisible"
+              }`}>
+              {basketCount}
+            </span>
           </button>
           {/* TODO: se não estiver logado, vai direcionar para rota LOGIN */}
           <div className="relative" ref={mobileDropdownRef}>
             <button
               type="button"
+              id="user-mobile"
               className="btn-ico-header"
               onClick={() => setOpenMobileDropdown(!openMobileDropdown)}
             >
-              <img src={user} className="h-[26px]" />
+              <img title="user" src={user} className="h-[26px]" />
             </button>
 
             <div
@@ -153,6 +186,10 @@ export const Header = ({ isMobile, handleNavigation }: Props) => {
             >
               <button className="dropdown-item" onClick={() => handleNavigation(RouteType.ACCOUNT)}>
                 Account
+              </button>
+
+              <button className="dropdown-item" onClick={() => handleNavigation(RouteType.FAVORITES)}>
+                Favorites
               </button>
 
               <button className="dropdown-item" onClick={() => handleNavigation(RouteType.ORDERS)}>
