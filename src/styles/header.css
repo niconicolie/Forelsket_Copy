@@ -1,12 +1,12 @@
 .header {
   box-shadow: 0 1px 1px rgb(0 0 0 / 0.1);
-  font-family: var(--font-inter);
 }
 
 .title-header {
   letter-spacing: 2px;
   cursor: pointer;
   color: var(--ds-color-black-900);
+  font-family: var(--font-bodoni);
 }
 
 .search-container {
@@ -26,6 +26,8 @@
   outline: none;
   border: 1px solid transparent;
   transition: all 300ms;
+  font-family: var(--font-inter) !important;
+  letter-spacing: 0.5px;
 }
 
 .search-input:focus {
@@ -36,6 +38,7 @@
 .btn-ico-header {
   cursor: pointer;
   transition: 0.1s;
+  position: relative;
 }
 
 .btn-ico-header:hover {
@@ -44,6 +47,31 @@
 
 .btn-ico-header img {
   display: inline;
+}
+
+.basket-btn {
+  position: relative;
+}
+
+.basket-count {
+  position: absolute;
+  top: -6px;
+  right: -8px;
+
+  width: 18px;
+  height: 18px;
+
+  border-radius: 999px;
+
+  background: var(--ds-color-pink-primary);
+  color: var(--ds-color-white-primary);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 12px;
+  font-family: var(--font-bodoni);
 }
 
 .dropdown {
@@ -62,7 +90,8 @@
   font-weight: 500;
   transition: 0.2s;
   cursor: pointer;
-  font-family: "Inter", sans-serif;
+  font-family: var(--font-inter) !important;
+  letter-spacing: 0.5px;
 }
 
 .dropdown-item:hover {
