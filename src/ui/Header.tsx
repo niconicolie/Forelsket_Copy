@@ -1,10 +1,12 @@
 import { useEffect, useRef, useState } from "react";
+import { type Props } from "../types/PropsPage.type";
+import { RouteType } from "../types/Navigation.type";
 import basket from "../assets/basket.svg"
 import user from "../assets/user.svg"
 import search from "../assets/search.svg"
 import "../styles/header.css";
 
-export const Header = () => {
+export const Header = ({ isMobile, handleNavigation }: Props) => {
  const [openDropdown, setOpenDropdown] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -31,7 +33,7 @@ export const Header = () => {
       <div className="header hidden md:flex h-[64px] items-center justify-between px-6 py-4">
 
         <div className="flex items-center min-w-fit">
-          <h1 className="title-header text-xl font-bold">FORELSKET</h1>
+          <h1 className="title-header text-xl font-bold" onClick={() => handleNavigation(RouteType.HOME)}>FORELSKET</h1>
         </div>
 
         <div className="flex-1 flex justify-center">
@@ -73,19 +75,19 @@ export const Header = () => {
                   : "opacity-0 invisible -translate-y-2"
               }`}
             >
-              <button className="dropdown-item">
+              <button className="dropdown-item" onClick={() => handleNavigation(RouteType.ACCOUNT)}>
                 Account
               </button>
 
-              <button className="dropdown-item">
+              <button className="dropdown-item" onClick={() => handleNavigation(RouteType.ORDERS)}>
                 My Orders
               </button>
 
-              <button className="dropdown-item">
+              <button className="dropdown-item" onClick={() => handleNavigation(RouteType.HELP)}>
                 Help & Support
               </button>
 
-              <button className="dropdown-item text-[#AA336A]">
+              <button className="dropdown-item text-[#AA336A]" onClick={() => handleNavigation(RouteType.LOGOUT)}>
                 Logout
               </button>
             </div>
@@ -96,7 +98,7 @@ export const Header = () => {
       <div className="header flex md:hidden w-full h-[64px] items-center justify-between px-4 gap-4 relative">
         
         <div className="flex items-center min-w-fit">
-          <h1 className="title-header text-lg font-bold">FORELSKET</h1>
+          <h1 className="title-header text-lg font-bold" onClick={() => handleNavigation(RouteType.HOME)}>FORELSKET</h1>
         </div>
 
         <div className="flex-1 flex justify-center">
@@ -122,7 +124,7 @@ export const Header = () => {
               className="h-[22px]"
             />
           </button>
-
+          {/* TODO: se não estiver logado, vai direcionar para rota LOGIN */}
           <div className="relative" ref={dropdownRef}>
             <button
               type="button"
@@ -134,30 +136,31 @@ export const Header = () => {
 
             <div
               className={`dropdown absolute right-0 top-[56px] w-[160px] overflow-hidden transition-all duration-200 z-50 ${
-                openDropdown ?
-                  "opacity-100 visible translate-y-0"
-                  : "opacity-0 invisible -translate-y-2"
-                  }`}
-                >
-                <button className="dropdown-item">
-                  Account
-                </button>
+                openDropdown
+                ? "opacity-100 visible translate-y-0"
+                : "opacity-0 invisible -translate-y-2"
+              }`}
+            >
+              <button className="dropdown-item" onClick={() => handleNavigation(RouteType.ACCOUNT)}>
+                Account
+              </button>
 
-                <button className="dropdown-item">
-                  My Orders
-                </button>
+              <button className="dropdown-item" onClick={() => handleNavigation(RouteType.ORDERS)}>
+                My Orders
+              </button>
 
-                <button className="dropdown-item">
-                  Help & Support
-                </button>
-
-                <button className="dropdown-item text-[#AA336A]">
-                  Logout
-                </button>
+              <button className="dropdown-item" onClick={() => handleNavigation(RouteType.HELP)}>
+                Help & Support
+              </button>
+                
+              <button className="dropdown-item text-[#AA336A]" onClick={() => handleNavigation(RouteType.LOGOUT)}>
+                Logout
+              </button>
             </div>
           </div>
         </div>
       </div>
+      
     </header>
   );
 };
