@@ -1,0 +1,86 @@
+.input-wrapper,
+.input-wrapper-icon {
+  position: relative;
+  border-radius: 6px;
+  padding: 12px 14px 8px;
+  background-color: var(--ds-color-white-50);
+  border: 1px solid var(--ds-color-white-300);
+  box-shadow: 0 1px 1px rgb(0 0 0 / 0.1);
+
+  transition: 0.2s ease-in-out;
+  font-family: var(--font-inter);
+}
+
+.icon-left {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 20px;
+  height: 20px;
+}
+
+.input-icon-left {
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+}
+
+.input,
+.input-icon {
+  width: 100%;
+  resize: none;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--ds-color-black-800);
+  font-size: 14px;
+  caret-color: var(--ds-color-pink-primary);
+}
+
+.input {
+  padding-left: 2px;
+}
+
+.input-icon {
+  padding-left: 26px;
+}
+
+.input-label {
+  position: absolute;
+  left: 12px;
+  top: 12px;
+  font-size: 14px;
+  color: var(--ds-color-black-700);
+  pointer-events: none;
+  transition: 0.2s;
+  padding: 0 4px;
+}
+
+.input:focus + .input-label,
+.input:not(:placeholder-shown) + .input-label {
+  top: 2px;
+  font-size: 10px;
+}
+
+.input-label-icon {
+  position: absolute;
+  left: 36px;
+  top: 12px;
+  font-size: 14px;
+  color: var(--ds-color-black-700);
+  pointer-events: none;
+  transition: 0.2s;
+  padding: 0 4px;
+}
+
+.input-icon:focus + .input-label-icon,
+.input-icon:not(:placeholder-shown) + .input-label-icon {
+  top: 2px;
+  font-size: 10px;
+}
