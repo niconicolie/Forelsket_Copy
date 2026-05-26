@@ -1,4 +1,3 @@
-import React from "react";
 import "../styles/topslider.css";
 
 const items = [
@@ -15,6 +14,7 @@ const items = [
   "MongoDB",
   "Design System",
 ];
+
 export default function TopSlider() {
   return (
     <div className="w-full h-[32px] overflow-hidden bg-zinc-950">
