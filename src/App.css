@@ -1,1 +1,68 @@
 @import "tailwindcss";
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+:root {
+/* fonts */
+--font-inter: "Inter", sans-serif;
+/* black scale */
+--ds-color-black-10: #FAFAFA;
+--ds-color-black-50: #F4F4F5;
+--ds-color-black-100: #E8E8EA;
+--ds-color-black-200: #D7D7DA;
+--ds-color-black-300: #BDBDC2;
+--ds-color-black-400: #9B9BA3;
+--ds-color-black-500: #7A7A84;
+--ds-color-black-600: #5A5A63;
+--ds-color-black-700: #3F3F46;
+--ds-color-black-800: #28282B;
+--ds-color-black-900: #1D1D20;
+--ds-color-black-1000: #121214;
+--ds-color-black-primary: #28282B;
+/* white scale */
+--ds-color-white-10: #FFFFFF;
+--ds-color-white-50: #FCFCFC;
+--ds-color-white-100: #F8F8F8;
+--ds-color-white-200: #F1F1F1;
+--ds-color-white-300: #E8E8E8;
+--ds-color-white-400: #DDDDDD;
+--ds-color-white-500: #CFCFCF;
+--ds-color-white-600: #B8B8B8;
+--ds-color-white-700: #949494;
+--ds-color-white-800: #6E6E6E;
+--ds-color-white-900: #4A4A4A;
+--ds-color-white-1000: #2C2C2C;
+--ds-color-white-primary: #FFFFFF;
+/* pink scale */
+--ds-color-pink-10: #FFF7FA;
+--ds-color-pink-50: #FDEEF4;
+--ds-color-pink-100: #F8D4E3;
+--ds-color-pink-200: #F1B5CD;
+--ds-color-pink-300: #E58EB2;
+--ds-color-pink-400: #CF5B8D;
+--ds-color-pink-500: #AA336A;
+--ds-color-pink-600: #912756;
+--ds-color-pink-700: #741C44;
+--ds-color-pink-800: #561232;
+--ds-color-pink-900: #390A20;
+--ds-color-pink-1000: #220412;
+/* --ds-color-pink-primary: #AA336A; */
+--ds-color-pink-primary: #e384b1;
+/* success */
+--ds-color-success-primary: #439c43;
+/* error */
+--ds-color-error-primary: #ce3131;
+/* cores */
+--ds-color-border-grey: #dbdbdb;
+}
+
+body {
+  font-family: var(--font-inter);
+}
+
+
+/* 
+bg elementos: white-10
+bordas: black-200
+label/subtitle: black-700
+title/text: black-800
+*/
