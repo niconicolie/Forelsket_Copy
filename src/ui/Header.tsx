@@ -7,16 +7,26 @@ import search from "../assets/search.svg"
 import "../styles/header.css";
 
 export const Header = ({ isMobile, handleNavigation }: Props) => {
- const [openDropdown, setOpenDropdown] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const [openDesktopDropdown, setOpenDesktopDropdown] = useState(false);
+  const [openMobileDropdown, setOpenMobileDropdown] = useState(false);
+
+  const desktopDropdownRef = useRef<HTMLDivElement>(null);
+  const mobileDropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
+        desktopDropdownRef.current &&
+        !desktopDropdownRef.current.contains(event.target as Node)
       ) {
-        setOpenDropdown(false);
+        setOpenDesktopDropdown(false);
+      }
+
+      if (
+        mobileDropdownRef.current &&
+        !mobileDropdownRef.current.contains(event.target as Node)
+      ) {
+        setOpenMobileDropdown(false);
       }
     }
 
@@ -30,7 +40,7 @@ export const Header = ({ isMobile, handleNavigation }: Props) => {
   return (
     <header className="sticky top-0 z-50 w-full">
       {/* header desktop */}
-      <div className="header hidden md:flex h-[64px] items-center justify-between px-6 py-4">
+      <div className="header hidden md:flex h-[64px] items-center justify-between px-6 py-4 relative">
 
         <div className="flex items-center min-w-fit">
           <h1 className="title-header text-xl font-bold" onClick={() => handleNavigation(RouteType.HOME)}>FORELSKET</h1>
@@ -59,18 +69,18 @@ export const Header = ({ isMobile, handleNavigation }: Props) => {
             />
           </button>
 
-          <div className="relative" ref={dropdownRef}>
+          <div className="relative" ref={desktopDropdownRef}>
             <button
               type="button"
               className="btn-ico-header"
-              onClick={() => setOpenDropdown(!openDropdown)}
+              onClick={() => setOpenDesktopDropdown(!openDesktopDropdown)}
             >
               <img src={user} className="h-[26px]" />
             </button>
 
             <div
               className={`dropdown absolute right-0 top-[56px] w-[160px] overflow-hidden transition-all duration-200 z-50 ${
-                openDropdown
+                openDesktopDropdown
                   ? "opacity-100 visible translate-y-0"
                   : "opacity-0 invisible -translate-y-2"
               }`}
@@ -125,18 +135,18 @@ export const Header = ({ isMobile, handleNavigation }: Props) => {
             />
           </button>
           {/* TODO: se não estiver logado, vai direcionar para rota LOGIN */}
-          <div className="relative" ref={dropdownRef}>
+          <div className="relative" ref={mobileDropdownRef}>
             <button
               type="button"
               className="btn-ico-header"
-              onClick={() => setOpenDropdown(!openDropdown)}
+              onClick={() => setOpenMobileDropdown(!openMobileDropdown)}
             >
               <img src={user} className="h-[26px]" />
             </button>
 
             <div
               className={`dropdown absolute right-0 top-[56px] w-[160px] overflow-hidden transition-all duration-200 z-50 ${
-                openDropdown
+                openMobileDropdown
                 ? "opacity-100 visible translate-y-0"
                 : "opacity-0 invisible -translate-y-2"
               }`}
@@ -160,7 +170,7 @@ export const Header = ({ isMobile, handleNavigation }: Props) => {
           </div>
         </div>
       </div>
-      
+
     </header>
   );
 };
