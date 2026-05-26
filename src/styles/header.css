@@ -42,6 +42,10 @@
   opacity: 0.8;
 }
 
+.btn-ico-header img {
+  display: inline;
+}
+
 .dropdown {
   border-radius: 6px;
   background-color: var(--ds-color-white-50);
