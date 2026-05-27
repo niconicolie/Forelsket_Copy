@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import r from "../assets/chevron_right_white.svg"
 import l from "../assets/chevron_left_white.svg"
+import "../styles/index.css"
 
 const slides = [
   {
@@ -29,11 +30,10 @@ const slides = [
 export default function HeroSlider() {
   const [current, setCurrent] = useState(0);
 
-  // AUTO PLAY
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
-    }, 5000);
+    }, 8000);
 
     return () => clearInterval(interval);
   }, [current]);
@@ -47,9 +47,8 @@ export default function HeroSlider() {
   };
 
   return (
-    <section className="relative h-[500px] w-full overflow-hidden rounded-[6px]">
+    <section className="relative h-[500px] w-full overflow-hidden rounded-[12px]">
       
-      {/* SLIDES */}
       <div
         className="flex h-full transition-transform duration-700 ease-in-out"
         style={{
@@ -61,17 +60,14 @@ export default function HeroSlider() {
             key={slide.id}
             className="relative min-w-full h-full"
           >
-            {/* IMAGE */}
             <img
               src={slide.image}
               alt={slide.title}
               className="h-full w-full object-cover"
             />
 
-            {/* DARK OVERLAY */}
             <div className="absolute inset-0 bg-black/35" />
 
-            {/* CONTENT */}
             <div className="absolute inset-0 flex flex-col justify-center px-10 md:px-20 text-white">
               <span className="mb-3 text-sm uppercase tracking-[0.3em] text-white/80">
                 FORELSKET
@@ -93,29 +89,26 @@ export default function HeroSlider() {
         ))}
       </div>
 
-      {/* LEFT BUTTON */}
       <button
         onClick={prevSlide}
-        className="absolute left-5 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 backdrop-blur-md transition hover:bg-white/30"
+        className="btn-hero-slider absolute left-5 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center"
       >
         <img src={l} className="h-[26px]" />
       </button>
 
-      {/* RIGHT BUTTON */}
       <button
         onClick={nextSlide}
-        className="absolute right-5 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/20 backdrop-blur-md transition hover:bg-white/30"
+        className="btn-hero-slider absolute right-5 top-1/2 z-20 flex h-12 w-12 -translate-y-1/2 items-center justify-center"
       >
         <img src={r} className="h-[26px]" />
       </button>
 
-      {/* DOTS */}
       <div className="absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 gap-3">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrent(index)}
-            className={`h-3 rounded-full transition-all duration-300 ${
+            className={`h-2 rounded-full transition-all duration-300 ${
               current === index
                 ? "w-10 bg-white"
                 : "w-3 bg-white/50"
